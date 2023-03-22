@@ -32,7 +32,8 @@ class BusinessContact(BaseContact):
         return f'{self.name} {self.surname} {self.email} {self.position} {self.company} {self.work_number}'
     def contact(self):
         print(f"Wybieram numer {self.work_number} i dzwonię do {self.name} {self.surname}, {self.position} w {self.company}")
-
+        
+#Create base contacts "P" or business contacts "B" using faker library
 def create_contacts(contact_type, how_many_cards):
     cards = []
     if contact_type == "P":
@@ -51,15 +52,16 @@ def create_contacts(contact_type, how_many_cards):
         return cards
 
 #Sort contact_cards by name, surname and email adress
-def by_name():
-    return sorted(cards, key=lambda Card: Card.name)
+def by_name(cards):
+    return sorted(cards, key=lambda c: c.name)
 
-def by_surname():
-    return sorted(cards, key=lambda Card: Card.surname)
+def by_surname(cards):
+    return sorted(cards, key=lambda c: c.surname)
 
-def by_email():
-    return sorted(cards, key=lambda Card: Card.email)
+def by_email(cards):
+    return sorted(cards, key=lambda c: c.email)
 
-#Run : create fake contacts, sort them by name and use method contact on first of them
+
+#Run : create fake contacts, sort them by name and use method "contact" on first of them
 cards = create_contacts("B", 4)
-by_name()[0].contact()
+by_name(cards)[0].contact()
